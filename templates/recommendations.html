@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Movie Recommender</a>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Recommended Movies</h1>
+        
+        <div class="row">
+            {% for index, movie in movies.iterrows() %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ movie['Poster_Link'] }}" class="card-img-top" alt="{{ movie['Series_Title'] }} Poster">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie['Series_Title'] }} ({{ movie['Released_Year'] }})</h5>
+                        <p class="card-text">IMDb Rating: {{ movie['IMDB_Rating'] }}/10</p>
+                        <p class="card-text">{{ movie['Overview'] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+            <a href="/" class="btn btn-primary">Go Back</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
